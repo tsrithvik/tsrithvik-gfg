@@ -27,13 +27,13 @@ class GFG {
 class Solution {
     static Long[] lcmAndGcd(Long A , Long B) {
         // code here
-        Long gcd = gcd(A,B);
-        if(A==0 || B==0) gcd= Math.max(A,B);
-        return new Long[]{(A*B)/gcd , gcd};
+        Long gcd= gcd(A,B);
+        return new Long[] { (A*B)/gcd, gcd }; 
+        
+        
     }
-    static Long gcd(Long A ,Long B){
-        if(B==0) return A;
-        else return gcd(B,A%B);
-    }
-    
+    static long gcd(Long A, Long B){
+            if(B==0) return A;
+            else return gcd(B, A%B);
+        }
 }
