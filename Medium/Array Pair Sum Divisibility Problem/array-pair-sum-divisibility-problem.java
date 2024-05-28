@@ -46,7 +46,7 @@ class Solution {
         }
         
         int i=1, j=k-1;
-        if(arr[0]%2 == 1) return false;
+        //if(arr[0]%2 == 1) return false;
         
         while(i<=j){
             if(arr[i]!=arr[j]) return false;
