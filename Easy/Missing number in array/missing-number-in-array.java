@@ -6,19 +6,18 @@ import java.util.*;
 
 class GFG {
     public static void main(String[] args) throws IOException {
-        BufferedReader br =
-            new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int t = Integer.parseInt(br.readLine().trim());
         while (t-- > 0) {
             int n = Integer.parseInt(br.readLine().trim());
             String[] str = br.readLine().trim().split(" ");
-            int[] array = new int[n - 1];
+            int[] arr = new int[n - 1];
             for (int i = 0; i < n - 1; i++) {
-                array[i] = Integer.parseInt(str[i]);
+                arr[i] = Integer.parseInt(str[i]);
             }
             Solution sln = new Solution();
-            System.out.println(sln.missingNumber(array, n));
+            System.out.println(sln.missingNumber(n, arr));
         }
     }
 }
@@ -26,19 +25,21 @@ class GFG {
 
 
 // User function Template for Java
-
 class Solution {
-    int missingNumber(int array[], int n) {
+
+    // Note that the size of the array is n-1
+    int missingNumber(int n, int arr[]) {
+
         // Your Code Here
-        Arrays.sort(array);
-        int c= 0;
-        int i=1;
-        while(i<n){
-            if(array[0]==1 && n==2) return 2;
-            else if(i != array[i-1]) return i;
-            //c++;
-            i++;
+        
+        HashSet<Integer> set = new HashSet<>();
+        for(int i: arr){
+            set.add(i);
         }
-        return i;
+        for(int i=1;i<=n;i++){
+            if(!set.contains(i)) return i;
+            
+        }
+        return -1;
     }
 }
