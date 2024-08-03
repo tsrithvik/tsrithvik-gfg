@@ -122,17 +122,14 @@ class Solution {
     int minValue(Node root) {
         // code here
         
-        ArrayList<Integer> al= new ArrayList<>();
-        odr(root, al);
-        
-        Collections.sort(al);
-        return al.get(0);
+        return min(root);
     }
-    static void odr(Node root, ArrayList<Integer> al){
-        if(root==null) return;
+    static int min(Node root){
+        if(root==null) return 0;
+        if(root.left==null) return root.data;
         
-        odr(root.left, al);
-        odr(root.right, al);
-        al.add(root.data);
+        return min(root.left);
+        
+        
     }
 }
