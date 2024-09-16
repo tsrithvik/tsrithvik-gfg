@@ -27,22 +27,22 @@ class Solution{
         // code here
         
         Stack<Character> st= new Stack<>();
-        Stack<Integer> index= new Stack<>();
-        index.push(-1);
-        int ans=0,len=0;
+        Stack<Integer> ind = new Stack<>();
+        int ans=0;
+        ind.push(-1);
+        
         for(int i=0;i<S.length();i++){
-            char x= S.charAt(i);
-            if(x=='(' ){
-                st.push(x);
-                index.push(i);
-            }
-            else if(x== ')' && !st.isEmpty()){
+            char c= S.charAt(i);
+            if(c=='('){
+                st.push(c);
+                ind.push(i);
+            } 
+            else if(c==')' && !st.isEmpty()){
                 st.pop();
-                index.pop();
-                ans= Math.max(ans, i- index.peek());
+                ind.pop();
+                ans= Math.max(ans, i-ind.peek());
             }
-            else index.push(i);
-            
+            else ind.push(i);
         }
         
         return ans;
